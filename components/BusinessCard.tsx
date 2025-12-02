@@ -164,19 +164,20 @@ END:VCARD`;
               </div>
             </div>
 
-            {/* Website - Click to copy */}
-            <div 
-              className="flex items-center space-x-2 text-[9px] group cursor-pointer hover:bg-white/10 rounded p-1 -ml-1 transition-all duration-300 ease-in-out"
-              onClick={(e) => handleCopy(e, data.website, 'website')}
-              title="Click to copy website"
-            >
+            {/* Website - Explicit Copy Button */}
+            <div className="flex items-center space-x-2 text-[9px] group">
               <div className="p-1.5 bg-white/10 rounded-full flex-shrink-0">
                 <Globe size={10} className="text-yellow-400" />
               </div>
               <span className="font-light tracking-wide break-all flex-1">{data.website}</span>
-               <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out flex-shrink-0 ml-1">
-                 {copiedField === 'website' ? <Check size={10} className="text-green-400" /> : <Copy size={10} className="text-gray-300" />}
-              </div>
+              
+              <button 
+                onClick={(e) => handleCopy(e, data.website, 'website')}
+                className="p-1.5 hover:bg-white/20 rounded-md transition-all text-gray-300 hover:text-white flex-shrink-0"
+                title="Copy Website URL"
+              >
+                {copiedField === 'website' ? <Check size={10} className="text-green-400" /> : <Copy size={10} />}
+              </button>
             </div>
 
             {data.address && (
@@ -224,7 +225,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ data, logoUrl, showBothSide
   return (
     <div className="w-full max-w-[400px] h-[240px] perspective-1000 relative group cursor-pointer" onClick={handleFlip}>
       <div 
-        className={`w-full h-full relative transition-all duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] transform-style-3d shadow-xl group-hover:shadow-2xl rounded-xl ${isFlipped ? '[transform:rotateY(180deg)]' : 'group-hover:[transform:rotateY(10deg)]'}`}
+        className={`w-full h-full relative transition-all duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] transform-style-3d shadow-xl group-hover:shadow-2xl rounded-xl ${isFlipped ? '[transform:rotateY(180deg)]' : 'group-hover:[transform:rotateY(10deg)_rotateX(2deg)_scale(1.02)]'}`}
       >
         {/* --- FRONT SIDE --- */}
         <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden">
